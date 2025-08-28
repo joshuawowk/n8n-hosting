@@ -1,8 +1,8 @@
 version: '3.8'
 
-# volumes:
+volumes:
 #   db_storage:
-#   n8n_storage:
+  n8n_storage:
 
 services:
   # postgres:
@@ -38,7 +38,7 @@ services:
     # links:
     #   - postgres
     volumes:
-      - /docker/n8n/n8n_storage:/home/node/.n8n
+      - n8n_storage:/home/node/.n8n
     # depends_on:
     #   postgres:
     #     condition: service_healthy
