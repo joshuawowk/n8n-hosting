@@ -42,6 +42,10 @@ services:
     #   - postgres
     volumes:
       - n8n_storage:/home/node/.n8n
+    networks:
+      npm_net:
+        external: true
+           
     # depends_on:
     #   postgres:
     #     condition: service_healthy
@@ -54,3 +58,6 @@ services:
       - N8N_RUNNERS_TASK_BROKER_URI=http://n8n:5679
     depends_on:
       - n8n
+    networks:
+      npm_net:
+        external: true
