@@ -3,6 +3,10 @@ version: "3.8"
 volumes:
   n8n_storage:
 
+networks:
+  npm_net:
+    external: true
+
 services:
   n8n:
     image: docker.n8n.io/n8nio/n8n:${N8N_VERSION}
@@ -22,8 +26,7 @@ services:
     volumes:
       - n8n_storage:/home/node/.n8n
     networks:
-      npm_net:
-        external: true
+      - npm_net
 
   n8n-runner:
     image: n8nio/runners:${N8N_VERSION}
@@ -34,5 +37,4 @@ services:
     depends_on:
       - n8n
     networks:
-      npm_net:
-        external: true
+      - npm_net
