@@ -41,7 +41,7 @@ services:
     # links:
     #   - postgres
     volumes:
-      - /docker/n8n/n8n_storage:/home/node/.n8n
+      - n8n_storage:/home/node/.n8n
     # depends_on:
     #   postgres:
     #     condition: service_healthy
