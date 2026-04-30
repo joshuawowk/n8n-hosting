@@ -47,7 +47,8 @@ services:
       - CU_PAT_TOKEN=${CU_PAT_TOKEN}
       - SN_TOTP_PATH=${SN_TOTP_PATH}
       - OPENAI_API_KEY=${OPENAI_API_KEY}
-      - NODE_FUNCTION_ALLOW_EXTERNAL=${NODE_FUNCTION_ALLOW_EXTERNAL}
+      - NODE_FUNCTION_ALLOW_EXTERNAL=true
+      - N8N_BLOCK_ENV_ACCESS_IN_NODE=false
     ports:
       - 5678:5678
     volumes:
@@ -80,7 +81,8 @@ services:
       - CU_PAT_TOKEN=${CU_PAT_TOKEN}
       - SN_TOTP_PATH=${SN_TOTP_PATH}
       - OPENAI_API_KEY=${OPENAI_API_KEY}
-      - NODE_FUNCTION_ALLOW_EXTERNAL=${NODE_FUNCTION_ALLOW_EXTERNAL}
+      - NODE_FUNCTION_ALLOW_EXTERNAL=true
+      - N8N_BLOCK_ENV_ACCESS_IN_NODE=false
     depends_on:
       - n8n
     networks:
