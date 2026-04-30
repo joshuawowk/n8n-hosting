@@ -49,6 +49,7 @@ services:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
       - NODE_FUNCTION_ALLOW_EXTERNAL=true
       - N8N_BLOCK_ENV_ACCESS_IN_NODE=false
+      - N8N_RUNNERS_ALLOWED_ENV=*
     ports:
       - 5678:5678
     volumes:
@@ -83,6 +84,7 @@ services:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
       - NODE_FUNCTION_ALLOW_EXTERNAL=true
       - N8N_BLOCK_ENV_ACCESS_IN_NODE=false
+      - N8N_RUNNERS_ALLOWED_ENV=*
     depends_on:
       - n8n
     networks:
