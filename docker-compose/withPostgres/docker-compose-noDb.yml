@@ -24,6 +24,12 @@ services:
       timeout: 5s
       retries: 10
       start_period: 10s
+    labels:
+      homepage.group: "n8n"
+      homepage.name: "n8n postgres"
+      homepage.icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/250px-Postgresql_elephant.svg.png"
+      homepage.href: "http://192.168.0.160:5678/"
+      homepage.description: "PostgreSQL db for n8n"
     networks:
       - npm_net
 
@@ -54,6 +60,12 @@ services:
       - 5678:5678
     volumes:
       - n8n_storage:/home/node/.n8n
+    labels:
+      homepage.group: "n8n"
+      homepage.name: "n8n"
+      homepage.icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/N8n-logo-new.svg/330px-N8n-logo-new.svg.png"
+      homepage.href: "http://192.168.0.160:5678/"
+      homepage.description: "n8n workflow automation"
     networks:
       - npm_net
     depends_on:
@@ -87,5 +99,11 @@ services:
       - N8N_RUNNERS_ALLOWED_ENV=*
     depends_on:
       - n8n
+    labels:
+      homepage.group: "n8n"
+      homepage.name: "n8n runner"
+      homepage.icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/N8n-logo-new.svg/330px-N8n-logo-new.svg.png"
+      homepage.href: "http://192.168.0.160:5678/"
+      homepage.description: "n8n runner"
     networks:
       - npm_net
