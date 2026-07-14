@@ -27,7 +27,7 @@ services:
     labels:
       homepage.group: "n8n"
       homepage.name: "n8n postgres"
-      homepage.icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/250px-Postgresql_elephant.svg.png"
+      homepage.icon: "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/postgresql.svg"
       homepage.href: "http://192.168.0.160:5678/"
       homepage.description: "PostgreSQL db for n8n"
     networks:
@@ -63,7 +63,7 @@ services:
     labels:
       homepage.group: "n8n"
       homepage.name: "n8n"
-      homepage.icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/N8n-logo-new.svg/330px-N8n-logo-new.svg.png"
+      homepage.icon: "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/n8n.svg"
       homepage.href: "http://192.168.0.160:5678/"
       homepage.description: "n8n workflow automation"
     networks:
@@ -102,7 +102,7 @@ services:
     labels:
       homepage.group: "n8n"
       homepage.name: "n8n runner"
-      homepage.icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/N8n-logo-new.svg/330px-N8n-logo-new.svg.png"
+      homepage.icon: "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/n8n.svg"
       homepage.href: "http://192.168.0.160:5678/"
       homepage.description: "n8n runner"
     networks:
