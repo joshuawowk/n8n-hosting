@@ -84,6 +84,7 @@ Environment variables from ConfigMap for all components
       name: {{ include "n8n.fullname" . }}
       key: OFFLOAD_MANUAL_EXECUTIONS_TO_WORKERS
 {{- end }}
+{{- if .Values.taskRunners.enabled }}
 - name: N8N_RUNNERS_MODE
   valueFrom:
     configMapKeyRef:
@@ -99,6 +100,7 @@ Environment variables from ConfigMap for all components
       name: {{ include "n8n.fullname" . }}-task-runners
       key: N8N_RUNNERS_AUTH_TOKEN
       {{- end }}
+{{- end }}
 {{- if .Values.queueMode.enabled }}
 {{- if .Values.redis.clusterNodes }}
 - name: QUEUE_BULL_REDIS_CLUSTER_NODES
@@ -216,6 +218,13 @@ Environment variables from ConfigMap for main pods only
       key: N8N_WEBHOOK_TIMEOUT
 {{- end }}
 {{- end }}
+{{- if or (and .Values.ingress .Values.ingress.enabled (gt (len .Values.ingress.hosts) 0)) (and .Values.webhook.url (hasPrefix "http" (.Values.webhook.url | toString))) }}
+- name: N8N_EDITOR_BASE_URL
+  valueFrom:
+    configMapKeyRef:
+      name: {{ include "n8n.fullname" . }}
+      key: N8N_EDITOR_BASE_URL
+{{- end }}
 {{- if and .Values.multiMain.enabled .Values.license.enabled }}
 - name: N8N_MULTI_MAIN_SETUP_ENABLED
   valueFrom:
@@ -266,6 +275,13 @@ Environment variables from ConfigMap for webhook processor pods (similar to main
       key: N8N_WEBHOOK_TIMEOUT
 {{- end }}
 {{- end }}
+{{- if or (and .Values.ingress .Values.ingress.enabled (gt (len .Values.ingress.hosts) 0)) (and .Values.webhook.url (hasPrefix "http" (.Values.webhook.url | toString))) }}
+- name: N8N_EDITOR_BASE_URL
+  valueFrom:
+    configMapKeyRef:
+      name: {{ include "n8n.fullname" . }}
+      key: N8N_EDITOR_BASE_URL
+{{- end }}
 {{- end }}
 
 {{/*
@@ -280,6 +296,13 @@ Environment variables from ConfigMap for worker pods (webhook URL for resume/wai
       name: {{ include "n8n.fullname" . }}
       key: WEBHOOK_URL
 {{- end }}
+{{- end }}
+{{- if or (and .Values.ingress .Values.ingress.enabled (gt (len .Values.ingress.hosts) 0)) (and .Values.webhook.url (hasPrefix "http" (.Values.webhook.url | toString))) }}
+- name: N8N_EDITOR_BASE_URL
+  valueFrom:
+    configMapKeyRef:
+      name: {{ include "n8n.fullname" . }}
+      key: N8N_EDITOR_BASE_URL
 {{- end }}
 {{- end }}
 
